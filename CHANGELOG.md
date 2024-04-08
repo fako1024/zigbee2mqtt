@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.37.0](https://github.com/Koenkk/zigbee2mqtt/compare/1.36.1...1.37.0) (2024-04-08)
+
+
+### Features
+
+* Unified logging across z2m/zh/zhc ([#21984](https://github.com/Koenkk/zigbee2mqtt/issues/21984)) ([73566df](https://github.com/Koenkk/zigbee2mqtt/commit/73566dff98e64038117ec71c7aaa897a4070474d))
+
+
+### Bug Fixes
+
+* Change `MQTT publish` log to `debug` ([#22063](https://github.com/Koenkk/zigbee2mqtt/issues/22063)) ([bbb6f9e](https://github.com/Koenkk/zigbee2mqtt/commit/bbb6f9e042a5c6cce78591e402d8ab0f7ab4195e))
+* Cleanup old logger leftovers ([#22069](https://github.com/Koenkk/zigbee2mqtt/issues/22069)) ([919c4ee](https://github.com/Koenkk/zigbee2mqtt/commit/919c4eee739d9c2dee855cf868e88f7848e6af36))
+* Convert logger into a class ([#22129](https://github.com/Koenkk/zigbee2mqtt/issues/22129)) ([3c1a4af](https://github.com/Koenkk/zigbee2mqtt/commit/3c1a4afcb723eecccf6ab9c3e04e1e0eca7b2cbb))
+* Disable automatic reconfigure when configureKey changes ([#22088](https://github.com/Koenkk/zigbee2mqtt/issues/22088)) ([9d251db](https://github.com/Koenkk/zigbee2mqtt/commit/9d251dbad5660f7663a79360a584df69d6f10875))
+* Fix crash when stopping in case MQTT client did not connect yet ([#22110](https://github.com/Koenkk/zigbee2mqtt/issues/22110)) ([92f5323](https://github.com/Koenkk/zigbee2mqtt/commit/92f53235f3e143ade8883dce01439f87913e2679))
+* **ignore:** fix 73566df ([cdd6fb0](https://github.com/Koenkk/zigbee2mqtt/commit/cdd6fb086419892e2725fc545b8015d83dea145d))
+* **ignore:** fix 73566dff98e64038117ec71c7aaa897a4070474d ([780c065](https://github.com/Koenkk/zigbee2mqtt/commit/780c065fa106358683bbef6fd72b0257adca5bae))
+* **ignore:** update dependencies ([#22007](https://github.com/Koenkk/zigbee2mqtt/issues/22007)) ([e748718](https://github.com/Koenkk/zigbee2mqtt/commit/e7487189cf6b2143a5606ce9bac7d4fa6e240587))
+* **ignore:** update zigbee-herdsman to 0.41.0 ([#22045](https://github.com/Koenkk/zigbee2mqtt/issues/22045)) ([bd0a411](https://github.com/Koenkk/zigbee2mqtt/commit/bd0a41107a18ab725d0d669af7993f2ad57cd9dd))
+* **ignore:** update zigbee-herdsman to 0.41.1 ([#22064](https://github.com/Koenkk/zigbee2mqtt/issues/22064)) ([3e91349](https://github.com/Koenkk/zigbee2mqtt/commit/3e913495b1a843cf0d67e4f2ffba975f56dd5f94))
+* **ignore:** update zigbee-herdsman to 0.41.2 ([#22087](https://github.com/Koenkk/zigbee2mqtt/issues/22087)) ([a020138](https://github.com/Koenkk/zigbee2mqtt/commit/a020138f6b4e90377d8bacf475fd33f62abb24e5))
+* **ignore:** update zigbee-herdsman to 0.42.0 ([#22121](https://github.com/Koenkk/zigbee2mqtt/issues/22121)) ([28b8aff](https://github.com/Koenkk/zigbee2mqtt/commit/28b8aff1ae8cabce8f61e34c85cd0b72b52a1e83))
+* **ignore:** update zigbee-herdsman-converters to 19.13.0 ([#22046](https://github.com/Koenkk/zigbee2mqtt/issues/22046)) ([db7d9e1](https://github.com/Koenkk/zigbee2mqtt/commit/db7d9e1120e01dd6b4e20bd352689eebb9a8912f))
+* **ignore:** update zigbee-herdsman-converters to 19.15.0 ([#22089](https://github.com/Koenkk/zigbee2mqtt/issues/22089)) ([ae35aae](https://github.com/Koenkk/zigbee2mqtt/commit/ae35aaed5ef3591f288019d9cb35d90a31aa4798))
+* **ignore:** update zigbee-herdsman-converters to 19.16.0 ([#22107](https://github.com/Koenkk/zigbee2mqtt/issues/22107)) ([394a3fb](https://github.com/Koenkk/zigbee2mqtt/commit/394a3fbd8aeb1dd4708326d8f854ac7db4b28dbf))
+* **ignore:** update zigbee-herdsman-converters to 19.17.0 ([#22122](https://github.com/Koenkk/zigbee2mqtt/issues/22122)) ([cabc9f5](https://github.com/Koenkk/zigbee2mqtt/commit/cabc9f5e2f6e22fb380e259093d29ec506a3b1f3))
+* **ignore:** update zigbee-herdsman-converters to 19.18.0 ([#22141](https://github.com/Koenkk/zigbee2mqtt/issues/22141)) ([8b8d660](https://github.com/Koenkk/zigbee2mqtt/commit/8b8d660b0622072696113c3a66458cbde1918838))
+* **ignore:** update zigbee2mqtt-frontend to 0.6.162 ([#22094](https://github.com/Koenkk/zigbee2mqtt/issues/22094)) ([0c80129](https://github.com/Koenkk/zigbee2mqtt/commit/0c801294661b0f6e592dd09f681c83bff376414d))
+* Reduce MQTT publishing by excluding debug logging from `bridge/logging` ([#22066](https://github.com/Koenkk/zigbee2mqtt/issues/22066)) ([002050f](https://github.com/Koenkk/zigbee2mqtt/commit/002050f35bd6228a464482d17a7feee82f9f5d31))
+* Remove deprecated Home Assistant `color_mode` ([#22142](https://github.com/Koenkk/zigbee2mqtt/issues/22142)) ([c98e5a7](https://github.com/Koenkk/zigbee2mqtt/commit/c98e5a74de1c322533f9c0defa0bbf0b5627b775))
+
 ## [1.36.1](https://github.com/Koenkk/zigbee2mqtt/compare/1.36.0...1.36.1) (2024-04-01)
 
 
