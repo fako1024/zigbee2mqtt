@@ -1,0 +1,13 @@
+diff --git a/src/controller/model/endpoint.ts b/src/controller/model/endpoint.ts
+index f8c9bb4b..e4b84398 100644
+--- a/src/controller/model/endpoint.ts
++++ b/src/controller/model/endpoint.ts
+@@ -657,7 +657,7 @@ class Endpoint extends Entity {
+     ): Options {
+         const providedOptions = options || {};
+         return {
+-            timeout: 10000,
++            timeout: 3000,
+             disableResponse: false,
+             disableRecovery: false,
+             disableDefaultResponse,

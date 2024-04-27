@@ -253,9 +253,19 @@ export default class Publish extends Extension {
                 }
             }
 
-            try {
+            // Default: Retry command once
+            let maxRetries = 1;
+
+            // If the converter is a set converter, retry twice
+            if (parsedTopic.type === 'set' && converter.convertSet) {
+                maxRetries = 2;
+            }
+
+            let retryCount = 0;
+            while (retryCount <= maxRetries) {
+              try {
                 if (parsedTopic.type === 'set' && converter.convertSet) {
-                    logger.debug(`Publishing '${parsedTopic.type}' '${key}' to '${re.name}'`);
+                    logger.debug(`Publishing '${parsedTopic.type}' '${key}' to '${re.name}' via '${converter.key}'`);
                     const result = await converter.convertSet(localTarget, key, value, meta);
                     const optimistic = !entitySettings.hasOwnProperty('optimistic') || entitySettings.optimistic;
                     if (result && result.state && optimistic) {
@@ -282,21 +292,29 @@ export default class Publish extends Extension {
 
                     this.legacyRetrieveState(re, converter, result, localTarget, key, meta);
                 } else if (parsedTopic.type === 'get' && converter.convertGet) {
-                    logger.debug(`Publishing get '${parsedTopic.type}' '${key}' to '${re.name}'`);
+                    logger.debug(`Publishing get '${parsedTopic.type}' '${key}' to '${re.name}' via '${converter.key}'`);
                     await converter.convertGet(localTarget, key, meta);
                 } else {
                     logger.error(`No converter available for '${parsedTopic.type}' '${key}' (${message[key]})`);
                     continue;
                 }
+                break; // exit the loop if the code executes without throwing an error
             } catch (error) {
-                const message =
+                retryCount++;
+                let message =
                     `Publish '${parsedTopic.type}' '${key}' to '${re.name}' failed: '${error}'`;
+
+                if (retryCount <= maxRetries) {
+                    message += ` - retrying (${retryCount}/${maxRetries})`;
+                }
+
                 logger.error(message);
                 logger.debug(error.stack);
                 this.legacyLog({type: `zigbee_publish_error`, message, meta: {friendly_name: re.name}});
             }
+          }
 
-            usedConverters[endpointOrGroupID].push(converter);
+          usedConverters[endpointOrGroupID].push(converter);
         }
 
         for (const [ID, payload] of Object.entries(toPublish)) {

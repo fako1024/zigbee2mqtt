@@ -8,6 +8,7 @@ FROM base as dependencies_and_build
 
 COPY package*.json tsconfig.json index.js ./
 COPY lib ./lib
+COPY deps ./deps
 
 RUN apk add --no-cache --virtual .buildtools make gcc g++ python3 linux-headers git npm && \
     npm ci --production --no-audit --no-optional --no-update-notifier && \
@@ -19,6 +20,7 @@ RUN apk add --no-cache --virtual .buildtools make gcc g++ python3 linux-headers 
 FROM base as release
 
 COPY --from=dependencies_and_build /app/node_modules ./node_modules
+COPY --from=dependencies_and_build /app/deps /app/deps
 COPY dist ./dist
 COPY package.json LICENSE index.js data/configuration.yaml data/configuration.example.yaml ./
 
