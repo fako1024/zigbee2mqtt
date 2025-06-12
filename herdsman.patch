@@ -7,7 +7,7 @@ index f8c9bb4b..e4b84398 100644
          const providedOptions = options || {};
          return {
 -            timeout: 10000,
-+            timeout: 3000,
++            timeout: 2000,
              disableResponse: false,
              disableRecovery: false,
              disableDefaultResponse,
